@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Studio Sol</title>
+		<link rel="stylesheet" href="style/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/07f085b28f.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+
+	<body>
+		<div class="container-main">
+			<div class="container-header">
+				<h1>QUAL É O NÚMERO?</h1>
+				<hr />
+			</div>
+
+			<div class="segment">
+				<div class="result-message">Aguardando seu palpite!</div>
+				<div id="clock-container"></div>
+				<button id class="but-new-game" onclick="startGame()">
+					<i class="fa fa-repeat" aria-hidden="true"></i>
+					<span>NOVA PARTIDA</span>
+				</button>
+			</div>
+
+			<div class="container-form">
+				<input type="text" id="number" placeholder="Digite o palpite" />
+				<button id="but-send" class="butSend" onclick="verifyResult()">
+					ENVIAR
+				</button>
+			</div>
+		</div>
+	</body>
+	<script src="js/indes.js"></script>
+	<script>
+		startGame();
+	</script>
+</html>
