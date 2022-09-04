@@ -18,11 +18,11 @@ const enabledButSendNumber = () => {
 const getNumber = async () => {
 	try {
 		info.innerHTML = "Carregando...";
-		return await fetch(
-			"https://us-central1-ss-devops.cloudfunctions.net/rand?min=1&max=300"
-		)
-			.then((response) => response.json())
-			.then((data) => data);
+		return await (
+			await fetch(
+				"https://us-central1-ss-devops.cloudfunctions.net/rand?min=1&max=300"
+			)
+		).json();
 	} catch (error) {
 	} finally {
 		info.innerHTML = "";
@@ -92,8 +92,6 @@ const displayConfig = (number) => {
 	return resultNumber[number];
 };
 const displayNumber = (number) => {
-	//if (number > 300 || !number) return;
-
 	const segment = [
 		{ seg: "segment-a", direction: "segment-x" },
 		{ seg: "segment-b", direction: "segment-y" },
