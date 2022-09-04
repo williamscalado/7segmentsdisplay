@@ -2,7 +2,7 @@
 
 Para o desenvolvimento desse jogo foi solicitado o que o resultado fosse impresso em um display de 7 segmentos, mas o que é display de sete segmento? lá vai uma breve definição.
 
-![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+![This is an image]([[https://myoctocat.com/assets/images/base-octocat.svg](https://raw.githubusercontent.com/williamscalado/7segmentsdisplay/master/assets/image/150px-7_Segment_Display_with_Labeled_Segments.svg.png)](https://raw.githubusercontent.com/williamscalado/7segmentsdisplay/master/assets/image/150px-7_Segment_Display_with_Labeled_Segments.svg.png))
 Um display de sete segmentos, como seu nome indica, é composto de sete elementos (a, b, b, c, d, e, f, g) os quais podem ser ligados ou desligados individualmente. Eles podem ser combinados para produzir representações simplificadas mostrar números de 0 a 9 e opcionalmente as letras A,b,C,d,E e F. (outros símbolos são possíveis desde que se utilize um circuito decodificador adequado. A maioria dos displays também possui em 8 elemento correspondente ao ponto decimal (dp).
 
 ## Tecnologias utilizadas
