@@ -1,4 +1,12 @@
-let resultRequest;
+/**
+ * Para  display, foi criado  estrutura que faço a integração do css com javascript, no javascript quando
+ * recebo a Palpite transformo em uma string e separa os número realizando um loop para cada buscando em displayConfig a configuração que
+ * cada numero tem para o display de 7 segmentos. após digitar o palpite realizo uma chamada assíncrona para o endpoint informado recebendo o valor
+ * e realizando as tratativas para sucesso ou error.
+ *
+ * Williams Calado
+ */
+
 const info = document.querySelector(".result-message");
 const butNewGame = document.querySelector(".but-new-game");
 const butSend = document.getElementById("but-send");
@@ -31,30 +39,29 @@ const getNumber = async () => {
 
 const startGame = async () => {
 	displayNumber("0");
-	const result = await getNumber();
-
-	if (result.StatusCode) {
-		displayNumber(result.StatusCode);
-		info.classList.add("danger");
-		info.innerHTML = "";
-		info.innerHTML = result.Error;
-		colorVar.style.setProperty("--bg-segment", "#CC3300");
-		disabledButSendNumber();
-		displayButNewGame();
-		return;
-	}
-	displayNumber("0");
 	guess.value = "";
 	info.innerHTML = "";
-	resultRequest = result.value;
 	butNewGame.style.display = "none";
 	colorVar.style.setProperty("--bg-segment", "#000");
 	enabledButSendNumber();
 };
 
-const verifyResult = () => {
+const verifyResult = async () => {
 	if (!guess.value || guess.value < 1 || guess.value > 300) {
 		info.innerHTML = "Escolha um valor entre 1 a 300.";
+		return;
+	}
+	resultRequest = await getNumber();
+
+	if (resultRequest.StatusCode) {
+		displayNumber(resultRequest.StatusCode);
+		info.classList.add("danger");
+		info.innerHTML = "";
+		info.innerHTML = "Erro";
+		colorVar.style.setProperty("--bg-segment", "#CC3300");
+		disabledButSendNumber();
+		displayButNewGame();
+		guess.value = "";
 		return;
 	}
 	info.innerHTML = "";
@@ -69,9 +76,9 @@ const verifyResult = () => {
 		colorVar.style.setProperty("--bg-segment", "#32BF00");
 	} else {
 		info.classList.add("danger");
-		info.innerHTML = guess.value > resultRequest ? "É maior" : "É menor";
+		info.innerHTML = guess.value > resultRequest ? "É menor" : "É maior";
 	}
-
+	guess.value = "";
 	displayButNewGame();
 };
 
@@ -102,7 +109,7 @@ const displayNumber = (number) => {
 		{ seg: "segment-g", direction: "segment-x" },
 	];
 
-	const newNumber = String(number).padStart(2, "0");
+	const newNumber = String(number);
 	if (newNumber.length > 3) return;
 
 	const divDisplayNumber = document.getElementById("clock-container");
